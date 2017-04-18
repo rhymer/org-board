@@ -70,10 +70,10 @@ Last updated:  Mon  3 Apr 2017 18:07:03 CEST
  ~org-board-wget-switches~ are the command line options to use with
  ~wget~.  By default these are included as:
 
-   "-e robots=off"      ignores robots.txt files.
-   "--page-requisites"  downloads all page requisites (CSS, images).
-   "--adjust-extension" add a ".html" extension where needed.
-   "--convert-links"    convert external links to internal.
+   ~-e robots=off~      ignores robots.txt files.
+   ~--page-requisites~  downloads all page requisites (CSS, images).
+   ~--adjust-extension~ add a ~.html~ extension where needed.
+   ~--convert-links~    convert external links to internal.
 
  ~org-board-agent-header-alist~ is an alist mapping agent names to
  their respective header/user-agent arguments.  Set a
@@ -106,7 +106,7 @@ Last updated:  Mon  3 Apr 2017 18:07:03 CEST
 
 * Known limitations
 
- Options like "--header: 'Agent X" cannot be specified as
+ Options like ~--header: 'Agent X~ cannot be specified as
  properties, because the property API splits on spaces, and such an
  option has to be passed to ~wget~ as one argument.  To work around
  this, add these types of options to ~org-board-agent-header-alist~
@@ -122,20 +122,23 @@ Last updated:  Mon  3 Apr 2017 18:07:03 CEST
  bookmark and keep locally for offline reading.  In a dedicated org
  file for bookmarks I created this entry:
 
+#+BEGIN_EXAMPLE
  ** TODO Linkers (20-part series)
  :PROPERTIES:
  :URL:          http://a3f.at/lists/linkers
  :WGET_OPTIONS: --recursive -l 1 --span-hosts
  :END:
+#+END_EXAMPLE
 
  Where the ~URL~ property is a page that already lists the URLs
  that I wanted to download.  I specified the recursive property for
  ~wget~ along with a depth of 1 ("-l 1") so that each linked page
- would be downloaded.  With point inside the entry, I run "M-x
- org-board-archive".  An ~org-attach~ directory is created and
+ would be downloaded.  With point inside the entry, I run ~M-x
+ org-board-archive~.  An ~org-attach~ directory is created and
  ~wget~ starts downloading the pages to it.  Afterwards, the end
  the entry looks like this:
 
+#+BEGIN_EXAMPLE
  ** TODO Linkers (20-part series)
  :PROPERTIES:
  :URL:          http://a3f.at/lists/linkers
@@ -143,6 +146,7 @@ Last updated:  Mon  3 Apr 2017 18:07:03 CEST
  :ID:           D3BCE79F-C465-45D5-847E-7733684B9812
  :ARCHIVED_AT:  [2016-08-30-Tue-15-03-56]
  :END:
+#+END_EXAMPLE
 
  The value in the ~ARCHIVED_AT~ property is a link that points to
  the root of the timestamped archival directory.  The ID property
